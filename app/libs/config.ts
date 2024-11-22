@@ -1,0 +1,1 @@
+// Application configurations (like Laravel config files)
