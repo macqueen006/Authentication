@@ -12,7 +12,7 @@ export const PUBLIC_ROUTES: string[] = ["/"];
  * These routes require authentication
  * @type {string[]}
  */
-export const AUTH_ROUTES: string[] = ["/auth/login", "/auth/register"];
+export const AUTH_ROUTES: string[] = ["/auth/login", "/auth/register", "/auth/error"];
 
 /**
  *A string of route that redirects the user to specific path after authenticated
