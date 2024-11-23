@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const DashboardPage = async () => {
   const session = await auth();
+  
   return (
     <div>
       {JSON.stringify(session)}
@@ -12,6 +13,7 @@ const DashboardPage = async () => {
           await signOut();
         }}
       >
+        <p>{ session?.user.id}</p>
         <Button type="submit">Sign out</Button>
       </form>
     </div>
