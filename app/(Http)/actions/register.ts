@@ -2,7 +2,7 @@
 import UserModel from "@/app/models/UserModel";
 import prisma from "@/lib/database/client";
 import { RegisterSchema } from "@/lib/validation";
-import bcrypt from "bcryptjs";
+import bcryptjs from "bcryptjs";
 import * as z from "zod";
 
 export async function register(values: z.infer<typeof RegisterSchema>) {
@@ -12,7 +12,7 @@ export async function register(values: z.infer<typeof RegisterSchema>) {
 
   const { email, name, password } = validation.data;
 
-  const hashedPassword = await bcrypt.hash(password, 12);
+  const hashedPassword = await bcryptjs.hash(password, 12);
 
   try {
     const user = await UserModel.getUserByEmail(email)
