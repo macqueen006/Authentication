@@ -4,6 +4,7 @@ import prisma from "@/lib/database/client";
 import { RegisterSchema } from "@/lib/validation";
 import bcryptjs from "bcryptjs";
 import * as z from "zod";
+import {generateVerificationToken} from "@/lib/token";
 
 export async function register(values: z.infer<typeof RegisterSchema>) {
 
@@ -22,7 +23,9 @@ export async function register(values: z.infer<typeof RegisterSchema>) {
       data: { name, email, password: hashedPassword },
     });
 
-    return { success: "User Created" };
+    const verificationToken = await generateVerificationToken(email);
+
+    return { success: "Confirmation email sent!" };
   } catch {
     return { error: "An unexpected error occurred." };
   }
